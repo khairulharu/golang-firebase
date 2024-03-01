@@ -1,7 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"log"
+
+	"gopkg.in/zabawaba99/firego.v1"
+)
 
 func main() {
-	fmt.Println("halo dek")
+	f := firego.New("firebase.url", nil)
+
+	v := map[string]string{"foo": "bar"}
+	if err := f.Set(v); err != nil {
+		log.Fatalf("error when set: %v", err)
+	}
 }
